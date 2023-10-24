@@ -13,11 +13,16 @@
       </li>
     </ul>
 
-    <div class="flex items-center space-x-4">
-      <button (click)="toggleUserChoice()">{{ currentUserStatus }}</button>
+    <div class="flex space-x-4">
+      <button
+        (click)="toggleUserChoice()"
+        class="user-button transition-transform hover:scale-125"
+      >
+        {{ currentUserStatus }}
+      </button>
 
       <button
-        class="flex transition-transform hover:scale-125 items-center"
+        class="theme-button flex transition-transform hover:scale-125 items-center"
         (click)="toggleDarkMode()"
       >
         <span *ngIf="!themeService.isDarkMode()" class="material-icons"
