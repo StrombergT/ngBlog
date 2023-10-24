@@ -1,0 +1,87 @@
+<div class="container mx-auto my-8 text-center">
+  <img
+    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.wikia.nocookie.net%2Fvillains%2Fimages%2Fe%2Fea%2FStewie.png%2Frevision%2Flatest%3Fcb%3D20200126094937&f=1&nofb=1&ipt=c44334fd599ab6f44f20686eb207d309e20563df8136732d942c1d9b3dec938a&ipo=images"
+    class="mx-auto mb-4 rounded-lg"
+    style="max-width: 200px; max-height: 200px"
+  />
+  <p class="text-white">
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam voluptatum
+    necessitatibus corrupti, distinctio rerum molestiae et labore minima
+    laboriosam nihil consequuntur dolor nisi dolorum accusantium, voluptates
+    assumenda. Ab, ratione ipsa?
+  </p>
+</div>
+
+<div class="container mx-auto my-8 flex flex-col items-center">
+  <button
+    (click)="toggleForm()"
+    class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-indigo mb-4"
+  >
+    Kontakta mig här!
+  </button>
+
+  <!-- Visa formuläret om showForm är true -->
+  <div
+    *ngIf="showForm"
+    class="container mx-auto p-8 max-w-md bg-white rounded-lg shadow-lg"
+  >
+    <h2 class="text-2xl font-bold mb-4">Kontakta Mig</h2>
+    <form (ngSubmit)="onSubmit()" class="space-y-4">
+      <div>
+        <label for="firstName" class="block text-sm font-medium"
+          >Förnamn:</label
+        >
+        <input
+          type="text"
+          id="firstName"
+          [(ngModel)]="firstName"
+          name="firstName"
+          required
+          class="mt-1 p-2 block w-full rounded-md border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
+        />
+      </div>
+      <div>
+        <label for="lastName" class="block text-sm font-medium"
+          >Efternamn:</label
+        >
+        <input
+          type="text"
+          id="lastName"
+          [(ngModel)]="lastName"
+          name="lastName"
+          required
+          class="mt-1 p-2 block w-full rounded-md border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
+        />
+      </div>
+      <div>
+        <label for="email" class="block text-sm font-medium">E-post:</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          required
+          class="mt-1 p-2 block w-full rounded-md border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
+        />
+      </div>
+      <div>
+        <label for="message" class="block text-sm font-medium"
+          >Meddelande:</label
+        >
+        <textarea
+          id="message"
+          [(ngModel)]="message"
+          name="message"
+          required
+          class="mt-1 p-2 block w-full rounded-md border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-indigo"
+      >
+        Skicka
+      </button>
+    </form>
+  </div>
+</div>
