@@ -6,11 +6,10 @@
     class="flex justify-between items-center bg-gray-300 text-white dark:bg-slate-900 p-5 font-semibold text-lg shadow-lg"
   >
     <ul class="flex space-x-4">
-      <li>
-        <a routerLink="/">Home</a>
-      </li>
-      <li>
-        <a routerLink="/about">About</a>
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/about">About</a></li>
+      <li *ngIf="currentUserStatus === 'admin'">
+        <a routerLink="/new-post">New Post</a>
       </li>
     </ul>
 

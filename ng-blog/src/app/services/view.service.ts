@@ -1,25 +1,19 @@
 import { Injectable } from '@angular/core';
-
-class UserView {
-  Admin = 'admin';
-  User = 'user';
-}
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ViewService {
-  private currentUser: string;
-
-  constructor() {
-    this.currentUser = 'user';
-  }
+  private currentUserSubject: BehaviorSubject<string> =
+    new BehaviorSubject<string>('user');
 
   toggleUser() {
-    this.currentUser = this.currentUser === 'user' ? 'admin' : 'user';
+    const currentUser = this.currentUserSubject.value;
+    this.currentUserSubject.next(currentUser === 'user' ? 'admin' : 'user');
   }
 
-  getUser(): string {
-    return this.currentUser;
+  getUser(): Observable<string> {
+    return this.currentUserSubject.asObservable();
   }
 }

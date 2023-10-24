@@ -8,29 +8,29 @@ import { ViewService } from './services/view.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  @HostBinding('class.dark') get darkMode() {
-    return this.themeService.isDarkMode();
-  }
-
-  currentUserStatus: string = '';
+  @HostBinding('class.dark') isDarkMode: boolean = false;
+  currentUserStatus: string = 'user';
 
   constructor(
     public themeService: ThemeService,
     public viewService: ViewService
-  ) {
-    this.currentUserStatus = this.viewService.getUser();
-  }
-
-  toggleUserChoice() {
-    this.viewService.toggleUser();
-    this.currentUserStatus = this.viewService.getUser();
-  }
+  ) {}
 
   ngOnInit() {
-    this.themeService.isDarkMode();
+    this.viewService.getUser().subscribe((userStatus) => {
+      this.currentUserStatus = userStatus;
+    });
+
+    this.themeService.isDarkMode().subscribe((isDark) => {
+      this.isDarkMode = isDark;
+    });
   }
 
   toggleDarkMode() {
     this.themeService.toggleDarkMode();
+  }
+
+  toggleUserChoice() {
+    this.viewService.toggleUser();
   }
 }
