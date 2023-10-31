@@ -1,0 +1,66 @@
+<div
+  *ngIf="post"
+  class="max-w-md mx-auto my-8 p-6 bg-white rounded-lg shadow-lg"
+>
+  <h2 class="text-2xl font-bold mb-4">{{ post.title }}</h2>
+  <img
+    class="w-full mb-4 rounded"
+    [src]="post.thumbnailUrl"
+    alt="{{ post.title }}"
+  />
+
+  <div class="flex items-center mt-4">
+    <span class="mr-2 text-gray-500"
+      >Created: {{ post.creationDate | date }}</span
+    >
+  </div>
+
+  <div class="mt-4">
+    <button
+      (click)="likePost(post.id)"
+      class="mr-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Like ({{ post.likes }})
+    </button>
+    <button
+      (click)="dislikePost(post.id)"
+      class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Dislike ({{ post.dislikes }})
+    </button>
+  </div>
+
+  <section *ngIf="comments.length > 0" class="mt-6">
+    <h3 class="text-xl font-semibold mb-2">Comments:</h3>
+    <ul>
+      <li *ngFor="let comment of comments" class="mb-2">
+        <span class="font-semibold">{{ comment.name }}:</span>
+        {{ comment.body }}
+      </li>
+    </ul>
+  </section>
+
+  <div class="mt-4">
+    <input
+      [(ngModel)]="newComment"
+      type="text"
+      placeholder="Comment..."
+      class="border p-2 rounded mr-2"
+    />
+    <button
+      (click)="addComment(post.id, newComment)"
+      class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Comments
+    </button>
+  </div>
+
+  <div class="mt-4" *ngIf="viewService.isAdmin()">
+    <button
+      (click)="removePost(post.id)"
+      class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Delete Post
+    </button>
+  </div>
+</div>
