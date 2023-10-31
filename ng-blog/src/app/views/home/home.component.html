@@ -1,1 +1,22 @@
-<p>my name is jeff</p>
+<div class="grid grid-cols-2 gap-4">
+  <div
+    *ngFor="let post of posts"
+    (click)="navigateToPostDetails(post.id)"
+    class="grid grid-cols-1 max-w-xs sm:max-w-md mx-auto my-8 p-6 bg-white rounded-lg shadow-lg"
+  >
+    <h2 class="text-xl sm:text-2xl font-bold mb-4">{{ post.title }}</h2>
+    <img class="w-full mb-4" [src]="post.thumbnailUrl" />
+  </div>
+</div>
+<!--
+<div class="flex items-center mt-4">
+      <span class="mr-2 text-gray-500"
+        >Skapat: {{ post.creationDate | date }}</span
+      >
+      <span class="mr-2 text-gray-500">Gillningar: {{ post.likes }}</span>
+      <span class="mr-2 text-gray-500">Dislikes: {{ post.dislikes }}</span>
+      <span class="mr-2 text-gray-500"
+        >Kommentarer: {{ post.comments.length }}</span
+      >
+    </div>
+-->
