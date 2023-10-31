@@ -1,5 +1,5 @@
 <div
-  [class.dark]="themeService.isDarkMode()"
+  [ngClass]="{ dark: themeService.isDarkMode() }"
   class="min-h-screen min-w-full bg-slate-200 dark:bg-slate-700 flex flex-col"
 >
   <div
