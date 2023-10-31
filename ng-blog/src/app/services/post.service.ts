@@ -33,7 +33,6 @@ export class PostService {
     localStorage.setItem('posts', JSON.stringify(this.localPosts));
   }
 }*/
-
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post';
 
@@ -44,21 +43,18 @@ export class PostService {
   public posts: Post[] = [];
 
   constructor() {
-    const storedPosts = localStorage.getItem('posts');
-    if (storedPosts) {
-      this.posts = JSON.parse(storedPosts);
-    }
+    this.loadLocalStorage();
   }
 
-  getPosts(): Post[] {
+  public getPosts(): Post[] {
     return this.posts;
   }
 
-  addPost(title: string, body: string, thumbnailUrl: string): void {
+  public addPost(title: string, body: string, thumbnailUrl: string): void {
     const newPost: Post = {
       id: this.posts.length + 1,
       title: title,
-      body,
+      body: body,
       thumbnailUrl: thumbnailUrl,
       creationDate: new Date(),
       likes: 0,
@@ -67,48 +63,46 @@ export class PostService {
     };
 
     this.posts.push(newPost);
-    this.savePostsToLocalStorage();
+    this.saveLocalStorage();
   }
 
-  likePost(postId: number): void {
+  public likePost(postId: number): void {
     const post = this.getPostById(postId);
     if (post) {
       post.likes++;
-      this.savePostsToLocalStorage();
+      this.saveLocalStorage();
     }
   }
 
-  dislikePost(postId: number): void {
+  public dislikePost(postId: number): void {
     const post = this.getPostById(postId);
     if (post) {
       post.dislikes++;
-      this.savePostsToLocalStorage();
+      this.saveLocalStorage();
     }
   }
 
-  getPostById(id: number): Post | undefined {
+  public getPostById(id: number): Post | undefined {
     const post = this.posts.find((post) => post.id === id);
-    console.log('getPostById:', post); // Logga post till konsolen för att se om den returnerar ett inlägg
     return post;
   }
 
-  /*  addComment(postId: number, comment: string): void {
-    const post = this.getPostById(postId);
-    if (post) {
-      post.comments.push(comment);
-      this.savePostsToLocalStorage();
-    }
-  }*/
-
-  removePost(postId: number): void {
+  public removePost(postId: number): void {
     const index = this.posts.findIndex((post) => post.id === postId);
     if (index !== -1) {
       this.posts.splice(index, 1);
-      this.savePostsToLocalStorage();
+      this.saveLocalStorage();
     }
   }
 
-  private savePostsToLocalStorage(): void {
+  private loadLocalStorage(): void {
+    const storedPosts = localStorage.getItem('posts');
+    if (storedPosts) {
+      this.posts = JSON.parse(storedPosts);
+    }
+  }
+
+  private saveLocalStorage(): void {
     localStorage.setItem('posts', JSON.stringify(this.posts));
   }
 }
