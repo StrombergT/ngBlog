@@ -16,4 +16,8 @@ export class ViewService {
   getUser(): Observable<string> {
     return this.currentUserSubject.asObservable();
   }
+
+  isAdmin(): boolean {
+    return this.currentUserSubject.value === 'admin';
+  }
 }
