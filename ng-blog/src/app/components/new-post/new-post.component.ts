@@ -48,8 +48,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-post.component.css'],
 })
 export class NewPostComponent {
-  title: string = ''; // Declare title as a string
-  content: string = ''; // Declare content as a string
+  title: string = '';
+  content: string = ''; 
 
   constructor(
     private postService: PostService,
@@ -60,7 +60,7 @@ export class NewPostComponent {
   uploadPost(): void {
     let user = this.viewService.getUser();
     if (!user) this.postService.addPost(this.title, this.content);
-    // Navigate the user to the home page after the post has been uploaded
+ 
     this.router.navigate(['/']);
   }
 }*/
