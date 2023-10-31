@@ -26,10 +26,9 @@ export class NewPostComponent {
       this.content &&
       this.thumbnailUrl
     ) {
-      // Kontrollera att både titel och innehåll finns innan du sparar posten
-      this.postService.addPost(this.title, this.content, this.thumbnailUrl); // Du kan lägga till en URL för thumbnail här om det behövs
-      this.title = ''; // Återställ titeln efter att posten har sparats
-      this.content = ''; // Återställ innehållet efter att posten har sparats
+      this.postService.addPost(this.title, this.content, this.thumbnailUrl);
+      this.title = '';
+      this.content = '';
       this.thumbnailUrl = '';
       alert('New post added');
       this.router.navigate(['/home']);
