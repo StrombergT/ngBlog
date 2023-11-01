@@ -1,0 +1,17 @@
+<footer class="bg-black text-white py-8">
+  <div class="container mx-auto flex flex-col items-center">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+      <div class="mb-4 md:mb-0"></div>
+    </div>
+    <div class="flex items-center justify-center mt-4 space-x-2">
+      <span>Follow Me:</span>
+      <a
+        *ngFor="let item of socialIcons"
+        [href]="item.link"
+        class="text-blue-400 hover:text-blue-300 transform transition-transform hover:scale-110"
+      >
+        <fa-icon [icon]="item.icon"></fa-icon>
+      </a>
+    </div>
+  </div>
+</footer>

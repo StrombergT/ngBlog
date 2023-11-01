@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { BlogComponent } from './views/blog/blog.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { BlogComponent } from './views/blog/blog.component';
     PostListComponent,
     PostDetailComponent,
     BlogComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { BlogComponent } from './views/blog/blog.component';
     MatCardModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

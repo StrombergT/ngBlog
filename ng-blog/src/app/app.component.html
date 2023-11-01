@@ -6,10 +6,25 @@
     class="flex justify-between items-center bg-gray-300 text-white dark:bg-slate-900 p-5 font-semibold text-lg shadow-lg"
   >
     <ul class="flex space-x-4">
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="/blog">Blog</a></li>
-      <li><a routerLink="/about">About</a></li>
-      <li *ngIf="currentUserStatus === 'admin'">
+      <li
+        class="text-blue-400 hover:text-blue-300 transform transition-transform hover:scale-110"
+      >
+        <a routerLink="/">Home</a>
+      </li>
+      <li
+        class="text-blue-400 hover:text-blue-300 transform transition-transform hover:scale-110"
+      >
+        <a routerLink="/blog">Blog</a>
+      </li>
+      <li
+        class="text-blue-400 hover:text-blue-300 transform transition-transform hover:scale-110"
+      >
+        <a routerLink="/about">About</a>
+      </li>
+      <li
+        class="text-blue-400 hover:text-blue-300 transform transition-transform hover:scale-110"
+        *ngIf="currentUserStatus === 'admin'"
+      >
         <a routerLink="/new-post">New Post</a>
       </li>
     </ul>
@@ -37,3 +52,4 @@
   </div>
   <router-outlet></router-outlet>
 </div>
+<app-footer></app-footer>
