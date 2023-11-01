@@ -1,6 +1,6 @@
-<mat-card>
-  <form (submit)="onPostAdded()">
-    <mat-form-field>
+<mat-card class="w-96 mx-auto p-4 shadow-lg">
+  <form (submit)="onPostAdded()" class="space-y-4">
+    <mat-form-field class="w-full">
       <input
         [(ngModel)]="title"
         type="text"
@@ -8,19 +8,28 @@
         name="title"
         placeholder="Post Title"
         required
+        class="w-full p-2 border rounded"
       />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="w-full">
       <input
         [(ngModel)]="thumbnailUrl"
-        type="text"
+        type="url"
         matInput
         name="thumbnailUrl"
         placeholder="Image URL"
         required
+        class="w-full p-2 border rounded"
       />
     </mat-form-field>
-    <mat-form-field>
+    <div *ngIf="thumbnailUrl">
+      <img
+        [src]="thumbnailUrl"
+        alt="Thumbnail"
+        class="w-full h-auto rounded mb-4"
+      />
+    </div>
+    <mat-form-field class="w-full">
       <textarea
         [(ngModel)]="content"
         rows="10"
@@ -28,8 +37,16 @@
         name="content"
         placeholder="Post Content"
         required
+        class="w-full p-2 border rounded"
       ></textarea>
     </mat-form-field>
-    <button mat-raised-button color="accent" type="submit">Save Post</button>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit"
+      class="w-full bg-accent text-white p-2 rounded hover:bg-accent-dark"
+    >
+      Save Post
+    </button>
   </form>
 </mat-card>

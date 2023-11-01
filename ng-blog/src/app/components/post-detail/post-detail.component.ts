@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { Post } from 'src/app/models/post';
@@ -18,6 +18,7 @@ export class PostDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private postService: PostService,
     private commentService: CommentService,
     public viewService: ViewService
@@ -49,8 +50,13 @@ export class PostDetailComponent implements OnInit {
     if (newComment.trim() !== '') {
       const userName = this.viewService.isAdmin() ? 'Admin' : 'User';
       this.commentService.addComment(postId, newComment, userName);
-      this.comments = this.commentService.getCommentsForPost(postId);
-      this.newComment = '';
+      const comment: Comment = {
+        id: '',
+        body: newComment,
+        name: userName,
+        postId: postId,
+      };
+      this.comments.push(comment);
     }
   }
 
@@ -58,5 +64,8 @@ export class PostDetailComponent implements OnInit {
     if (this.viewService.isAdmin()) {
       this.postService.removePost(postId);
     }
+  }
+  navigateBackToHome(): void {
+    this.router.navigate(['/home']);
   }
 }

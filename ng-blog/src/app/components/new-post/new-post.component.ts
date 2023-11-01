@@ -20,12 +20,7 @@ export class NewPostComponent {
   ) {}
 
   onPostAdded() {
-    if (
-      this.viewService.isAdmin() &&
-      this.title &&
-      this.content &&
-      this.thumbnailUrl
-    ) {
+    if (this.viewService.isAdmin()) {
       this.postService.addPost(this.title, this.content, this.thumbnailUrl);
       this.title = '';
       this.content = '';

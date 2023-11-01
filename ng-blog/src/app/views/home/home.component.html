@@ -1,13 +1,19 @@
-<div class="grid grid-cols-2 gap-4">
+<div
+  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 p-4"
+>
   <div
     *ngFor="let post of posts"
     (click)="navigateToPostDetails(post.id)"
-    class="grid grid-cols-1 max-w-xs sm:max-w-md mx-auto my-8 p-6 bg-white rounded-lg shadow-lg"
+    class="flex flex-col max-w-xs mx-auto my-8 p-6 bg-white rounded-lg shadow-lg"
   >
-    <h2 class="text-xl sm:text-2xl font-bold mb-4">{{ post.title }}</h2>
-    <img class="w-full mb-4" [src]="post.thumbnailUrl" />
+    <h2 class="text-xl font-semibold mb-2 line-clamp-2">{{ post.title }}</h2>
+    <img
+      class="w-full h-40 object-cover mb-4 rounded-t-lg"
+      [src]="post.thumbnailUrl"
+    />
   </div>
 </div>
+
 <!--
 <div class="flex items-center mt-4">
       <span class="mr-2 text-gray-500"

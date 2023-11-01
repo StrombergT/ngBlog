@@ -13,9 +13,18 @@ import { NewPostComponent } from './components/new-post/new-post.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { BlogComponent } from './views/blog/blog.component';
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, HomeComponent, NewPostComponent, PostListComponent, PostDetailComponent],
+  declarations: [
+    AppComponent,
+    AboutComponent,
+    HomeComponent,
+    NewPostComponent,
+    PostListComponent,
+    PostDetailComponent,
+    BlogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
