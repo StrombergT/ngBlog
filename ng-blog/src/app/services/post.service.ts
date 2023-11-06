@@ -50,7 +50,7 @@ export class PostService {
     return this.posts;
   }
 
-  public addPost(title: string, body: string, thumbnailUrl: string): void {
+  addPost(title: string, body: string, thumbnailUrl: string): void {
     const newPost: Post = {
       id: this.posts.length + 1,
       title: title,

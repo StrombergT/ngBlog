@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+/*import { Component } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { ViewService } from 'src/app/services/view.service';
 import { Router } from '@angular/router';
@@ -31,8 +31,8 @@ export class NewPostComponent {
       alert('Please enter both title and content.');
     }
   }
-}
-/*import { Component } from '@angular/core';
+}*/
+import { Component } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { ViewService } from 'src/app/services/view.service';
 import { Router } from '@angular/router';
@@ -44,7 +44,8 @@ import { Router } from '@angular/router';
 })
 export class NewPostComponent {
   title: string = '';
-  content: string = ''; 
+  content: string = '';
+  thumbnailUrl = '';
 
   constructor(
     private postService: PostService,
@@ -53,9 +54,10 @@ export class NewPostComponent {
   ) {}
 
   uploadPost(): void {
-    let user = this.viewService.getUser();
-    if (!user) this.postService.addPost(this.title, this.content);
- 
-    this.router.navigate(['/']);
+    if (this.viewService.isAdmin()) {
+      this.postService.addPost(this.title, this.content, this.thumbnailUrl);
+
+      this.router.navigate(['/']);
+    }
   }
-}*/
+}

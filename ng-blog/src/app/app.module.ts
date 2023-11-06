@@ -16,6 +16,8 @@ import { PostListComponent } from './components/post-list/post-list.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { BlogComponent } from './views/blog/blog.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { TagsComponent } from './components/tags/tags.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { FooterComponent } from './components/footer/footer.component';
     PostDetailComponent,
     BlogComponent,
     FooterComponent,
+    NavbarComponent,
+    TagsComponent,
   ],
   imports: [
     BrowserModule,

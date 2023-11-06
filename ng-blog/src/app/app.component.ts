@@ -1,6 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { ThemeService } from './services/theme.service';
-import { ViewService } from './services/view.service';
 
 @Component({
   selector: 'app-root',
@@ -9,18 +8,10 @@ import { ViewService } from './services/view.service';
 })
 export class AppComponent implements OnInit {
   @HostBinding('class.dark') isDarkMode: boolean = false;
-  currentUserStatus: string = 'user';
 
-  constructor(
-    public themeService: ThemeService,
-    public viewService: ViewService
-  ) {}
+  constructor(public themeService: ThemeService) {}
 
   ngOnInit() {
-    this.viewService.getUser().subscribe((userStatus) => {
-      this.currentUserStatus = userStatus;
-    });
-
     this.themeService.isDarkMode().subscribe((isDark) => {
       this.isDarkMode = isDark;
     });
@@ -28,9 +19,5 @@ export class AppComponent implements OnInit {
 
   toggleDarkMode() {
     this.themeService.toggleDarkMode();
-  }
-
-  toggleUserChoice() {
-    this.viewService.toggleUser();
   }
 }

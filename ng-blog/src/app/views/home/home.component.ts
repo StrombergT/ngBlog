@@ -8,13 +8,11 @@ import { Post } from 'src/app/models/post';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
-  posts: Post[] = [];
-
+export class HomeComponent {
   constructor(private postService: PostService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.posts = this.postService.getPosts();
+  get posts(): Post[] {
+    return this.postService.posts;
   }
 
   navigateToPostDetails(postId: number): void {
