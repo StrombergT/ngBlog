@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'blog', component: BlogComponent },
+  { path: 'blog/:id', component: PostDetailComponent },
   { path: 'about', component: AboutComponent },
   { path: 'post/:id', component: PostDetailComponent },
   { path: 'new-post', component: NewPostComponent },

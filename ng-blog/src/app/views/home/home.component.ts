@@ -16,6 +16,6 @@ export class HomeComponent {
   }
 
   navigateToPostDetails(postId: number): void {
-    this.router.navigate(['/post', postId]);
+    this.router.navigate(['/blog', postId]);
   }
 }
