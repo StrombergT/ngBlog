@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PostService } from 'src/app/services/post.service';
-import { CommentService } from 'src/app/services/comment.service';
-import { Post } from 'src/app/models/post';
 import { Comment } from 'src/app/models/comment';
+import { Post } from 'src/app/models/post';
+import { CommentService } from 'src/app/services/comment.service';
+import { PostService } from 'src/app/services/post.service';
 import { ViewService } from 'src/app/services/view.service';
 
 @Component({
@@ -12,6 +12,7 @@ import { ViewService } from 'src/app/services/view.service';
   styleUrls: ['./post-detail.component.css'],
 })
 export class PostDetailComponent implements OnInit {
+  postId: number = 0;
   post: Post | undefined;
   comments: Comment[] = [];
   newComment: string = '';
@@ -25,46 +26,52 @@ export class PostDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const postId = +this.route.snapshot.paramMap.get('id')!;
-    this.post = this.postService.getPostById(postId);
+    this.route.params.subscribe((params) => {
+      this.postId = +params['id'];
+      this.post = this.postService.getPostById(this.postId);
+      this.comments = this.commentService.getCommentsForPost(this.postId) || [];
+    });
+  }
+
+  likePost(): void {
     if (this.post) {
-      this.comments = this.commentService.getCommentsForPost(postId);
+      this.postService.likePost(this.post.id);
     }
   }
 
-  public likePost(postId: number) {
+  dislikePost(): void {
     if (this.post) {
-      this.postService.likePost(postId);
-      this.post = this.postService.getPostById(postId);
+      this.postService.dislikePost(this.post.id);
     }
   }
 
-  public dislikePost(postId: number) {
+  addComment(): void {
+    if (this.newComment.trim() !== '') {
+      if (this.post) {
+        this.commentService.addComment(
+          this.post.id,
+          this.newComment,
+          'Anonymous'
+        );
+        this.comments =
+          this.commentService.getCommentsForPost(this.post.id) || [];
+        this.newComment = '';
+      }
+    }
+  }
+
+  removeComment(commentId: string): void {
+    this.commentService.removeComment(commentId);
+    this.comments = this.commentService.getCommentsForPost(this.postId) || [];
+  }
+
+  removePost(): void {
     if (this.post) {
-      this.postService.dislikePost(postId);
-      this.post = this.postService.getPostById(postId);
+      this.postService.removePost(this.post.id);
+      this.router.navigate(['/home']);
     }
   }
 
-  public addComment(postId: number, newComment: string) {
-    if (newComment.trim() !== '') {
-      const userName = this.viewService.isAdmin() ? 'Admin' : 'User';
-      this.commentService.addComment(postId, newComment, userName);
-      const comment: Comment = {
-        id: '',
-        body: newComment,
-        name: userName,
-        postId: postId,
-      };
-      this.comments.push(comment);
-    }
-  }
-
-  public removePost(postId: number) {
-    if (this.viewService.isAdmin()) {
-      this.postService.removePost(postId);
-    }
-  }
   navigateBackToHome(): void {
     this.router.navigate(['/home']);
   }

@@ -50,7 +50,7 @@ export class PostService {
     return this.posts;
   }
 
-  addPost(title: string, body: string, thumbnailUrl: string): void {
+  public addPost(title: string, body: string, thumbnailUrl: string): void {
     const newPost: Post = {
       id: this.posts.length + 1,
       title: title,
@@ -96,10 +96,8 @@ export class PostService {
   }
 
   private loadLocalStorage(): void {
-    const storedPosts = localStorage.getItem('posts');
-    if (storedPosts) {
-      this.posts = JSON.parse(storedPosts);
-    }
+    let storedPosts = localStorage.getItem('posts');
+    this.posts = storedPosts ? JSON.parse(storedPosts) : [];
   }
 
   private saveLocalStorage(): void {

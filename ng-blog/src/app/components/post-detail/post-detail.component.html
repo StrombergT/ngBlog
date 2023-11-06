@@ -14,13 +14,13 @@
 
   <div class="mt-4">
     <button
-      (click)="likePost(post.id)"
+      (click)="likePost()"
       class="mr-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
     >
       Like ({{ post.likes }})
     </button>
     <button
-      (click)="dislikePost(post.id)"
+      (click)="dislikePost()"
       class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
     >
       Dislike ({{ post.dislikes }})
@@ -33,6 +33,13 @@
       <li *ngFor="let comment of comments" class="mb-2">
         <span class="font-semibold">{{ comment.name }}:</span>
         {{ comment.body }}
+        <button
+          *ngIf="viewService.isAdmin()"
+          (click)="removeComment(comment.id)"
+          class="..."
+        >
+          Delete
+        </button>
       </li>
     </ul>
   </section>
@@ -44,28 +51,13 @@
       placeholder="Comment..."
       class="border p-2 rounded mr-2"
     />
-    <button
-      (click)="addComment(post.id, newComment)"
-      class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-    >
-      Comments
-    </button>
+    <button (click)="addComment()" class="...">Add Comment</button>
   </div>
 
   <div class="mt-4" *ngIf="viewService.isAdmin()">
-    <button
-      (click)="removePost(post.id)"
-      class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-    >
-      Delete Post
-    </button>
+    <button (click)="removePost()" class="...">Delete Post</button>
   </div>
   <div class="mt-4">
-    <button
-      (click)="navigateBackToHome()"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-    >
-      Back to Home
-    </button>
+    <button (click)="navigateBackToHome()" class="...">Back to Home</button>
   </div>
 </div>

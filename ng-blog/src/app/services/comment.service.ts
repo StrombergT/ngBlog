@@ -1,4 +1,4 @@
-/*import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Comment } from '../models/comment';
 import { Post } from '../models/post';
 
@@ -6,29 +6,53 @@ import { Post } from '../models/post';
   providedIn: 'root',
 })
 export class CommentService {
-  private localComments: Comment[] = [];
+  public comments: Comment[] = [];
 
   constructor() {
-    this.localComments = this.loadLocalData();
+    this.loadLocalStorage();
   }
 
-  private loadLocalData(): Comment[] {
-    let posts = localStorage.getItem('posts');
-    return !posts ? [] : JSON.parse(posts);
+  public getComments(): Comment[] {
+    return this.comments;
   }
 
-  public get comments(): Comment[] {
-    return this.localComments;
+  public addComment(postId: number, body: string, name: string): void {
+    const newComment: Comment = {
+      id: (this.comments.length + 1).toString(),
+      body: body,
+      name: name || 'Anonymous',
+      postId: postId,
+    };
+
+    this.comments.push(newComment);
+    this.saveLocalStorage();
   }
-  public addPost(id: number, body: string) {
-    this.localComments.push({
-      id: this.localComments.length + 1,
-      body,
-    });
-    localStorage.setItem('posts', JSON.stringify(this.localComments));
+
+  public getCommentsForPost(postId: number): Comment[] {
+    return this.comments.filter((comment) => comment.postId === postId);
+  }
+
+  public removeComment(commentId: string): void {
+    const index = this.comments.findIndex(
+      (comment) => comment.id === commentId
+    );
+    if (index !== -1) {
+      this.comments.splice(index, 1);
+      this.saveLocalStorage();
+    }
+  }
+
+  private loadLocalStorage(): void {
+    let storedComments = localStorage.getItem('comments');
+    this.comments = storedComments ? JSON.parse(storedComments) : [];
+  }
+
+  private saveLocalStorage(): void {
+    localStorage.setItem('comments', JSON.stringify(this.comments));
   }
 }
-*/
+
+/*
 import { Injectable } from '@angular/core';
 import { Comment } from '../models/comment';
 
@@ -72,4 +96,4 @@ export class CommentService {
     this.localComments.push(newComment);
     localStorage.setItem('comments', JSON.stringify(this.localComments));
   }
-}
+}*/
