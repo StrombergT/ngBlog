@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -38,8 +40,10 @@ import { TagsComponent } from './components/tags/tags.component';
     FormsModule,
     MatInputModule,
     MatCardModule,
+    MatIconModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatGridListModule,
     FontAwesomeModule,
   ],
   providers: [],

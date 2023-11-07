@@ -10,6 +10,7 @@ import { Post } from 'src/app/models/post';
 })
 export class HomeComponent {
   constructor(private postService: PostService, private router: Router) {}
+  post: Post | undefined;
 
   get posts(): Post[] {
     return this.postService.posts;
