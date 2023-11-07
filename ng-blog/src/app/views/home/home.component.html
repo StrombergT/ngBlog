@@ -1,42 +1,7 @@
-<!-- <mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile *ngFor="let post of posts">
-    <div
-      class="flex flex-col max-w-2xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg"
-    >
-      <h2 class="text-xl font-semibold mb-2 line-clamp-2">{{ post.title }}</h2>
-      <img
-        class="w-full h-80 object-cover mb-4 rounded-t-lg"
-        [src]="post.thumbnailUrl"
-      />
-
-      <button
-        (click)="navigateToPostDetails(post.id)"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Read More
-      </button>
-    </div>
-  </mat-grid-tile>
-  <div id="home" class="m-10">
-    <div class="flex">
-      <div class="w-1/4">
-        <div
-          class="bg-black w-1/2 text-white m-10 p-4 rounded-md top-12 sticky"
-        >
-          <h3>Communities</h3>
-          <p>r/Com1</p>
-          <p>r/Com2</p>
-          <p>r/Com3</p>
-          <p>r/Com4</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</mat-grid-list> -->
-
 <div
   *ngFor="let post of posts"
-  class="flex flex-col justify-center space-y-4 my-5 mx-auto p-3 text-black rounded-lg bg-neutral-50 hover:bg-slate-200 w-1/3"
+  class="flex flex-col w-1/3 justify-center space-y-4 my-5 mx-auto p-3 cursor-pointer text-black rounded-lg bg-neutral-50 hover:bg-slate-200"
+  (click)="navigateToPostDetails(post.id)"
 >
   <div class="font-bold text-lg mb-2 text-center">{{ post.title }}</div>
   <img
@@ -45,22 +10,16 @@
   />
 
   <div class="flex items-center space-x-1 mb-4">
-    <button
-      (click)="navigateToPostDetails(post.id)"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-full text-sm"
-    >
-      Read More
-    </button>
-    <button
+    <div
       class="bg-gray-500 text-white font-bold py-1 px-2 rounded-full text-sm"
     >
       <i class="fas fa-thumbs-up"></i> ({{ post.likes }})
-    </button>
-    <button
+    </div>
+    <div
       class="bg-gray-500 text-white font-bold py-1 px-2 rounded-full text-sm"
     >
       <i class="fas fa-thumbs-down"></i> ({{ post.dislikes }})
-    </button>
+    </div>
   </div>
   <hr class="border-t border-neutral-200 my-4" />
 </div>
