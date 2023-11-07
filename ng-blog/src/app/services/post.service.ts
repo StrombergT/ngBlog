@@ -50,11 +50,17 @@ export class PostService {
     return this.posts;
   }
 
-  public addPost(title: string, body: string, thumbnailUrl: string): void {
+  public addPost(
+    title: string,
+    body: string,
+    thumbnailUrl: string,
+    tags: string[]
+  ): void {
     const newPost: Post = {
       id: this.posts.length + 1,
       title: title,
       body: body,
+      tags: tags,
       thumbnailUrl: thumbnailUrl,
       creationDate: new Date(),
       likes: 0,

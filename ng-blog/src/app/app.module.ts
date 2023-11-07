@@ -20,6 +20,7 @@ import { BlogComponent } from './views/blog/blog.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TagsComponent } from './components/tags/tags.component';
+import { TagFilterComponent } from './components/tag-filter/tag-filter.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { TagsComponent } from './components/tags/tags.component';
     FooterComponent,
     NavbarComponent,
     TagsComponent,
+    TagFilterComponent,
   ],
   imports: [
     BrowserModule,

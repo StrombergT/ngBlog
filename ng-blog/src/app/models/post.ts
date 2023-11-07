@@ -7,4 +7,5 @@ export interface Post {
   likes: number;
   dislikes: number;
   comments: string[];
+  tags: string[];
 }

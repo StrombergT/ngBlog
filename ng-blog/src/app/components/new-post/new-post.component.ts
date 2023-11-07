@@ -46,6 +46,8 @@ export class NewPostComponent {
   title: string = '';
   content: string = '';
   thumbnailUrl = '';
+  tagsInput: string = '';
+  tags: string[] = [];
 
   constructor(
     private postService: PostService,
@@ -55,9 +57,20 @@ export class NewPostComponent {
 
   uploadPost(): void {
     if (this.viewService.isAdmin()) {
-      this.postService.addPost(this.title, this.content, this.thumbnailUrl);
+      this.tags = this.tagsInput.split(',').map((tag) => tag.trim());
+
+      this.postService.addPost(
+        this.title,
+        this.content,
+        this.thumbnailUrl,
+        this.tags
+      );
 
       this.router.navigate(['/']);
     }
+  }
+
+  removeTag(tagToRemove: string): void {
+    this.tags = this.tags.filter((tag) => tag !== tagToRemove);
   }
 }

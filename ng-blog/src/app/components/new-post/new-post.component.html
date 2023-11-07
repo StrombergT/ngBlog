@@ -1,52 +1,68 @@
-<mat-card class="w-4/5 md:w-9/12 mx-auto md:mt-10">
+<div class="w-4/5 md:w-9/12 mx-auto mt-10">
   <form (submit)="uploadPost()" class="space-y-4">
-    <mat-form-field class="w-full">
+    <div class="w-full">
       <input
         [(ngModel)]="title"
         type="text"
-        matInput
         name="title"
         placeholder="Post Title"
         required
         class="w-full p-2 border rounded"
       />
-    </mat-form-field>
-    <mat-form-field class="w-full">
+    </div>
+    <div class="w-full">
       <input
         [(ngModel)]="thumbnailUrl"
         type="url"
-        matInput
         name="thumbnailUrl"
         placeholder="Image URL"
         required
         class="w-full p-2 border rounded"
       />
-    </mat-form-field>
-    <div *ngIf="thumbnailUrl">
+    </div>
+    <div *ngIf="thumbnailUrl" class="w-full">
       <img
         [src]="thumbnailUrl"
         alt="Thumbnail"
         class="w-full h-auto rounded mb-4"
       />
     </div>
-    <mat-form-field class="w-full">
+    <div class="w-full">
       <textarea
         [(ngModel)]="content"
         rows="10"
-        matInput
         name="content"
         placeholder="Post Content"
         required
         class="w-full p-2 border rounded"
       ></textarea>
-    </mat-form-field>
+    </div>
+    <div class="w-full">
+      <input
+        [(ngModel)]="tagsInput"
+        type="text"
+        name="tagsInput"
+        placeholder="Tags (comma separated)"
+        class="w-full p-2 border rounded"
+      />
+    </div>
+    <div class="w-full">
+      <div *ngFor="let tag of tags" class="inline-block mr-2 mb-2">
+        <span class="bg-gray-300 px-2 py-1 rounded">{{ tag }}</span>
+        <button
+          type="button"
+          (click)="removeTag(tag)"
+          class="ml-2 text-red-500"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
     <button
-      mat-raised-button
-      color="accent"
       type="submit"
-      class="w-full bg-accent text-white p-2 rounded hover:bg-accent-dark"
+      class="w-full bg-accent text-black p-2 rounded hover:bg-accent-dark"
     >
       Save Post
     </button>
   </form>
-</mat-card>
+</div>
