@@ -10,32 +10,30 @@
     <h2 class="my-8 text-3xl tracking-tighter leading-tight">All Posts</h2>
   </section>
 
-  <section class="flex justify-between">
-    <div class="w-2/3"></div>
-    <div class="w-1/3 flex justify-end">
-      <div>
-        <h3 class="text-xl font-semibold mb-2">Tags:</h3>
-        <ul>
-          <li *ngFor="let post of posts">
-            <div *ngFor="let tag of post.tags" class="inline-block mr-2 mb-2">
-              <a
-                routerLink="/tags/{{ tag }}"
-                style="
-                  background-color: #ccc;
-                  padding: 0.5rem 1rem;
-                  border-radius: 5px;
-                  text-decoration: none;
-                  color: #000;
-                "
-              >
-                #{{ tag }}
-              </a>
-            </div>
-          </li>
-        </ul>
-      </div>
+  <!-- Move tags section here or to another suitable position -->
+  <div class="w-1/3 flex justify-end">
+    <div>
+      <h3 class="text-xl font-semibold mb-2">Tags:</h3>
+      <ul>
+        <li *ngFor="let post of posts">
+          <div *ngFor="let tag of post.tags" class="inline-block mr-2 mb-2">
+            <a
+              routerLink="/tags/{{ tag }}"
+              style="
+                background-color: #ccc;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+                text-decoration: none;
+                color: #000;
+              "
+            >
+              #{{ tag }}
+            </a>
+          </div>
+        </li>
+      </ul>
     </div>
-  </section>
-</div>
+  </div>
 
-<app-home></app-home>
+  <app-home></app-home>
+</div>

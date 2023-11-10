@@ -3,12 +3,14 @@
   class="min-h-screen min-w-full bg-slate-50 dark:bg-slate-700 flex flex-col"
 >
   <div
-    class="flex justify-between items-center bg-gray-300 text-white dark:bg-slate-900 p-5 font-semibold text-lg shadow-lg"
+    class="flex justify-center items-center bg-gray-300 text-white dark:bg-slate-900 p-5 font-semibold text-lg shadow-lg"
   >
-    <app-navbar></app-navbar>
-    <div class="flex space-x-4">
+    <div class="flex items-center">
+      <app-navbar></app-navbar>
+    </div>
+    <div class="justify-end">
       <button
-        class="theme-button flex transition-transform hover:scale-125 items-center"
+        class="theme-button flex transition-transform hover:scale-125"
         (click)="toggleDarkMode()"
       >
         <span *ngIf="!isDarkMode" class="material-icons">dark_mode</span>
@@ -16,6 +18,7 @@
       </button>
     </div>
   </div>
+
   <router-outlet></router-outlet>
 </div>
 <app-footer></app-footer>
