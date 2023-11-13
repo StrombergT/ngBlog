@@ -1,6 +1,6 @@
 <div class="w-full min-h-screen mx-auto top-5 z-20">
   <div
-    class="absolute inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5"
+    class="relative inset-0 top-[120px] max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center gap-5"
   >
     <div class="flex flex-col justify-center items-center mt-5">
       <div class="w-5 h-5 rounded-full bg-[#915eff]"></div>
@@ -8,7 +8,7 @@
     </div>
 
     <div>
-      <h1 class="text-white text-center">
+      <h1 class="text-white text-center lg:text-left">
         Hi, I'm <span class="text-[#915eff]">Tobias</span>
       </h1>
 
@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<div class="mx-auto my-8 flex flex-col items-center">
+<div class="mx-auto flex flex-col items-center">
   <button
     (click)="toggleForm()"
     class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-indigo mb-4"
