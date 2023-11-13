@@ -1,39 +1,82 @@
-<div class="flex flex-col justify-center space-y-4 my-5 mx-auto p-3 w-full">
-  <section class="flex flex-col w-1/3 justify-center space-y-4 mx-auto p-3">
-    <h2 class="font-bold mb-3 text-4xl tracking-tighter leading-tight">Blog</h2>
-    <h4>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, quia iste
-      sapiente, deserunt recusandae magni obcaecati nulla eius itaque, error
-      animi perferendis perspiciatis. Libero sed odit architecto, ipsum vitae
-      ullam!
-    </h4>
-    <h2 class="my-8 text-3xl tracking-tighter leading-tight">All Posts</h2>
-  </section>
+<div class="container max-w-5xl px-6 mx-auto min-h-screen mt-20">
+  <div class="flex flex-row gap-16">
+    <div class="max-w-prose md:flex-none">
+      <section class="mb-12">
+        <!-- Blog Content -->
+        <h2
+          class="font-bold mb-3 text-4xl tracking-tighter leading-tight text-[#915eff] text-center mx-auto"
+        >
+          Blog
+        </h2>
+        <h4 class="text-center mx-auto">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, quia
+          iste sapiente, deserunt recusandae magni obcaecati nulla eius itaque,
+          error animi perferendis perspiciatis. Libero sed odit architecto,
+          ipsum vitae ullam!
+        </h4>
+      </section>
 
-  <!-- Move tags section here or to another suitable position -->
-  <div class="w-1/3 flex justify-end">
-    <div>
-      <h3 class="text-xl font-semibold mb-2">Tags:</h3>
-      <ul>
-        <li *ngFor="let post of posts">
-          <div *ngFor="let tag of post.tags" class="inline-block mr-2 mb-2">
-            <a
-              routerLink="/tags/{{ tag }}"
-              style="
-                background-color: #ccc;
-                padding: 0.5rem 1rem;
-                border-radius: 5px;
-                text-decoration: none;
-                color: #000;
-              "
-            >
-              #{{ tag }}
-            </a>
+      <!-- All Posts Section -->
+      <section>
+        <div class="flex justify-between">
+          <h2
+            class="my-8 text-3xl tracking-tighter leading-tight text-center text-[#915eff]"
+          >
+            All Posts
+          </h2>
+        </div>
+        <div class="flex flex-col gap-8">
+          <div class="flex gap-5">
+            <div class="w-1/3">
+              <div
+                *ngFor="let post of posts"
+                class="cursor-pointer text-secondary bg-primary hover:scale-105"
+                (click)="navigateToPostDetails(post.id)"
+              >
+                <div class="mb-4 flex">
+                  <img
+                    class="rounded-xl w-48 h-32 object-cover mr-4"
+                    [src]="post.thumbnailUrl"
+                  />
+                  <div class="w-2/3">
+                    <h3
+                      class="font-bold text-lg mb-1 leading-snug text-[#915eff] whitespace-nowrap"
+                    >
+                      {{ post.title }}
+                    </h3>
+
+                    <p class="text-sm leading-relaxed mb-4 line-clamp-3">
+                      {{ post.body }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </li>
-      </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- Tags Section -->
+    <div class="flex-initial hidden lg:block">
+      <div>
+        <h3
+          class="mt-2 mb-8 text-3xl tracking-tighter leading-tight text-[#915eff]"
+        >
+          Tags:
+        </h3>
+        <div class="flex flex-wrap gap-1">
+          <div *ngFor="let post of posts">
+            <div *ngFor="let tag of post.tags" class="inline-block">
+              <a
+                class="inline-block mr-1 mb-1 bg-gray-300 px-4 py-2 rounded-full no-underline text-black"
+              >
+                #{{ tag }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <app-home></app-home>
 </div>

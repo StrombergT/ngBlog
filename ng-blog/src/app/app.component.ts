@@ -8,6 +8,7 @@ import { ThemeService } from './services/theme.service';
 })
 export class AppComponent implements OnInit {
   @HostBinding('class.dark') isDarkMode: boolean = false;
+  imagePath: string = 'assets/herobg.png';
 
   constructor(public themeService: ThemeService) {}
 
