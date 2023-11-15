@@ -1,15 +1,22 @@
-<div
-  class="bg-gradient-to-tl from-purple-900 to-green-700 h-[60rem] w-full relative"
->
-  <img
-    src="https://images.pexels.com/photos/274973/pexels-photo-274973.jpeg?auto=compress&cs=tinysrgb&w=1600"
-    class="w-full h-full object-cover absolute mix-blend-overlay"
-  />
-  <div class="p-24">
-    <h1 class="text-green-400 text-6xl font-bold">Photo</h1>
-    <h2 class="text-blue-300 text-3xl font-light">
-      Lorem, ipsum dolor sit amet.
-    </h2>
+<div class="relative flex justify-center mx-auto mt-20">
+  <div class="flex justify-center">
+    <div
+      class="bg-gradient-to-tl from-purple-900 to-green-700 relative z-0 flex w-full justify-center overflow-hidden rounded-lg bg-cover bg-center text-center"
+    >
+      <img
+        src="https://images.pexels.com/photos/1205022/pexels-photo-1205022.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        class="w-full h-full object-cover absolute mix-blend-overlay"
+        alt="Beautiful photo"
+      />
+      <div class="p-8 sm:p-12 md:p-16 lg:p-24 xl:p-32">
+        <h1 class="text-green-400 text-4xl sm:text-5xl md:text-6xl font-bold">
+          Welcome to My Photo Blog
+        </h1>
+        <p class="text-white text-lg mt-4">
+          Explore the beauty captured through our lens.
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -17,15 +24,16 @@
   <section
     class="mt-16 flex flex-col lg:flex-row lg:flex-wrap lg:justify-center gap-10 py-10"
   >
+    <!-- Posts -->
     <div
       *ngFor="let post of posts"
-      class="w-96 mx-6 my-10 flex flex-col lg:w-1/3 cursor-pointer text-secondary"
-      (click)="navigateToPostDetails(post.id)"
+      class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 mx-2 my-4 cursor-pointer text-secondary"
     >
       <div class="font-bold text-lg mb-2 text-center">{{ post.title }}</div>
       <img
-        class="rounded-xl w-full h-52 object-cover transition transform hover:scale-105"
+        class="rounded-xl w-full h-52 object-cover transition transform hover:scale-105 mt-4"
         [src]="post.thumbnailUrl"
+        alt="{{ post.title }} Image"
       />
 
       <div class="flex items-center space-x-1 mb-2 mt-2">

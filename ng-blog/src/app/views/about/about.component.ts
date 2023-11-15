@@ -6,29 +6,36 @@ import { Component } from '@angular/core';
   styleUrls: ['./about.component.css'],
 })
 export class AboutComponent {
-  // Variabler för formuläret
   public showForm: boolean = false;
-  public firstName: string = '';
-  public lastName: string = '';
-  public email: string = '';
-  public message: string = '';
+  public formData: any = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    message: '',
+  };
+
+  formFields = [
+    { id: 'firstName', label: 'Name', type: 'text', name: 'firstName' },
+    { id: 'lastName', label: 'Last Name', type: 'text', name: 'lastName' },
+    { id: 'email', label: 'E-Mail', type: 'email', name: 'email' },
+    { id: 'message', label: 'Message', type: 'text', name: 'message' },
+  ];
 
   toggleForm() {
     this.showForm = !this.showForm;
   }
 
-  // Funktion som körs när formuläret skickas in
   onSubmit() {
-    // Skriv ut informationen i konsolen
-    console.log('Förnamn:', this.firstName);
-    console.log('Efternamn:', this.lastName);
-    console.log('E-post:', this.email);
-    console.log('Meddelande:', this.message);
+    console.log(this.formData);
+    this.resetForm();
+  }
 
-    // Återställ formulärfälten efter skickande
-    this.firstName = '';
-    this.lastName = '';
-    this.email = '';
-    this.message = '';
+  resetForm() {
+    this.formData = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      message: '',
+    };
   }
 }
