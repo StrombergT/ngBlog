@@ -2,9 +2,7 @@
   <div
     class="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center gap-5"
   >
-    <!-- Image Section -->
     <section class="flex items-center mt-20">
-      <!-- Side Decoration (Move it outside the condition) -->
       <div class="flex flex-col justify-center items-center mt-5">
         <div class="w-5 h-5 rounded-full bg-[#915eff]"></div>
         <div class="w-1 sm:h-80 h-40 violet-gradient"></div>
@@ -42,38 +40,74 @@
     </section>
   </div>
   <br />
-
   <div class="flex flex-col lg:flex-row justify-center items-center">
-    <div
-      class="bg-gradient-to-tr from-indigo-900 p-4 rounded-md shadow-md max-w-md mx-auto"
+    <button
+      class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline-indigo text-sm"
+      (click)="toggleForm()"
     >
-      <h2 class="text-lg font-bold mb-2 text-white">Contact Me</h2>
-      <form (ngSubmit)="onSubmit()" class="space-y-2">
-        <ng-container *ngFor="let field of formFields">
-          <div class="mb-2">
-            <label
-              [for]="field.id"
-              class="block text-xs font-medium text-white"
-            >
-              {{ field.label }}:
-            </label>
-            <input
-              [type]="field.type"
-              [id]="field.id"
-              [(ngModel)]="formData[field.name]"
-              [name]="field.name"
-              required
-              class="mt-1 p-1 w-full rounded-md border focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-            />
-          </div>
-        </ng-container>
-        <button
-          type="submit"
-          class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline-indigo text-sm"
+      {{ showForm ? "Close Form" : "Open Form" }}
+    </button>
+  </div>
+  <div
+    *ngIf="showForm"
+    class="bg-gradient-to-tr from-indigo-900 p-4 rounded-md shadow-md max-w-md mx-auto mt-5"
+  >
+    <h2 class="text-lg font-bold mb-2 text-white">Contact Me</h2>
+    <form (ngSubmit)="onSubmit()" class="space-y-4">
+      <div>
+        <label for="firstName" class="block text-sm font-medium"
+          >Firstname:</label
         >
-          Send
-        </button>
-      </form>
-    </div>
+        <input
+          type="text"
+          id="firstName"
+          [(ngModel)]="firstName"
+          name="firstName"
+          required
+          class="mt-1 p-2 block w-full rounded-md border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
+        />
+      </div>
+      <div>
+        <label for="lastName" class="block text-sm font-medium"
+          >Lastname:</label
+        >
+        <input
+          type="text"
+          id="lastName"
+          [(ngModel)]="lastName"
+          name="lastName"
+          required
+          class="mt-1 p-2 block w-full rounded-md border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
+        />
+      </div>
+      <div>
+        <label for="email" class="block text-sm font-medium">E-Mail:</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          required
+          class="mt-1 p-2 block w-full rounded-md border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
+        />
+      </div>
+      <div>
+        <label for="message" class="block text-sm font-medium">Message:</label>
+        <textarea
+          id="message"
+          [(ngModel)]="message"
+          name="message"
+          required
+          rows="10"
+          class="mt-1 p-2 block w-full rounded-md border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-indigo"
+      >
+        Send
+      </button>
+    </form>
   </div>
 </div>

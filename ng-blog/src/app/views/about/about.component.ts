@@ -7,35 +7,24 @@ import { Component } from '@angular/core';
 })
 export class AboutComponent {
   public showForm: boolean = false;
-  public formData: any = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: '',
-  };
-
-  formFields = [
-    { id: 'firstName', label: 'Name', type: 'text', name: 'firstName' },
-    { id: 'lastName', label: 'Last Name', type: 'text', name: 'lastName' },
-    { id: 'email', label: 'E-Mail', type: 'email', name: 'email' },
-    { id: 'message', label: 'Message', type: 'text', name: 'message' },
-  ];
+  public firstName: string = '';
+  public lastName: string = '';
+  public email: string = '';
+  public message: string = '';
 
   toggleForm() {
     this.showForm = !this.showForm;
   }
 
   onSubmit() {
-    console.log(this.formData);
-    this.resetForm();
-  }
+    console.log('Firstname:', this.firstName);
+    console.log('Lastname:', this.lastName);
+    console.log('E-Mail:', this.email);
+    console.log('Message:', this.message);
 
-  resetForm() {
-    this.formData = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      message: '',
-    };
+    this.firstName = '';
+    this.lastName = '';
+    this.email = '';
+    this.message = '';
   }
 }
