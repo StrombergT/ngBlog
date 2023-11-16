@@ -15,18 +15,15 @@ export class ImageCarouselComponent {
   currentSlideIndex = 0;
 
   selectSlide(index: number): void {
-    console.log('Selecting slide:', index);
     this.currentSlideIndex = index;
   }
 
   prevSlide(): void {
-    console.log('Going to previous slide');
     this.currentSlideIndex =
       (this.currentSlideIndex - 1 + this.images.length) % this.images.length;
   }
 
   nextSlide(): void {
-    console.log('Going to next slide');
     this.currentSlideIndex = (this.currentSlideIndex + 1) % this.images.length;
   }
 }
