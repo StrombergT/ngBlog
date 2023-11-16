@@ -20,4 +20,7 @@ export class ViewService {
   isAdmin(): boolean {
     return this.currentUserSubject.value === 'admin';
   }
+  resetUserStatus() {
+    this.currentUserSubject.next('user');
+  }
 }

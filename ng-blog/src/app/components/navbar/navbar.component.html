@@ -1,27 +1,13 @@
-<header class="w-full flex items-center py-5 fixed top-0 z-20 bg-primary">
-  <div class="flex justify-between items-center max-w-7xl mx-auto">
-    <div class="flex items-center justify-between mb-4 md:mb-0 md:hidden"></div>
-
-    <nav class="md:hidden mb-4" (click)="handleMenu($event)">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16"
-        />
-      </svg>
-    </nav>
-
-    <nav class="md:block" [class.hidden]="isHidden">
-      <ul class="list-reset md:flex md:items-center">
-        <li class="md:ml-4 md:mx-8">
+<header class="bg-white">
+  <nav class="flex justify-between items-center w-[92%] mx-auto">
+    <div>
+      <i class="fa-sharp fa-solid fa-mountain-sun fa-2xl text-5xl"></i>
+    </div>
+    <div
+      class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex-items-center px-5"
+    >
+      <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
+        <li>
           <a routerLink="/home" class="relative">
             Home
             <span
@@ -29,13 +15,12 @@
             ></span>
           </a>
         </li>
-
         <li class="md:ml-4 md:mx-8 group">
           <a
             routerLink="/blog"
             class="transition-transform duration-300 hover:scale-90 relative"
           >
-            Blogs
+            Blog
             <span
               class="absolute bottom-0 left-0 w-full h-0.5 bg-[#915eff] transition-transform duration-300 origin-left transform scale-x-0 group-hover:scale-x-100"
             ></span>
@@ -48,7 +33,6 @@
         >
           <a routerLink="/new-post">New Post</a>
         </li>
-
         <li class="md:ml-4 md:mx-8 group">
           <a
             routerLink="/about"
@@ -60,14 +44,15 @@
             ></span>
           </a>
         </li>
-
-        <button
-          (click)="toggleUserChoice()"
-          class="md:ml-4 md:mx-8 transition-transform hover:scale-125 bg-[#915eff] text-white-100 px-4 py-2 rounded-full"
-        >
-          {{ currentUserStatus }}
-        </button>
       </ul>
-    </nav>
-  </div>
+    </div>
+    <div class="flex items-center gap-6">
+      <button
+        (click)="toggleUserChoice()"
+        class="md:ml-4 md:mx-8 transition-transform hover:scale-125 bg-[#915eff] text-white-100 px-4 py-2 rounded-full"
+      >
+        {{ currentUserStatus }}
+      </button>
+    </div>
+  </nav>
 </header>

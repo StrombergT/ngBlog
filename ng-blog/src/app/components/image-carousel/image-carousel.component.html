@@ -1,0 +1,49 @@
+<div class="relative w-full">
+  <!-- Carousel wrapper -->
+  <div
+    class="relative h-56 md:w-full mx-auto overflow-hidden rounded-lg md:h-96"
+  >
+    <!-- Use *ngFor to dynamically generate carousel items -->
+    <div *ngFor="let image of images; let i = index">
+      <div *ngIf="i === currentSlideIndex">
+        <img
+          [src]="image"
+          class="absolute block w-full top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        />
+      </div>
+    </div>
+
+    <!-- Slider indicators -->
+    <div
+      class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse"
+    >
+      <!-- Use *ngFor to dynamically generate slider indicators -->
+      <button
+        type="button"
+        class="w-3 h-3 rounded-full"
+        [attr.aria-current]="i === currentSlideIndex ? 'true' : 'false'"
+        (click)="selectSlide(i)"
+        *ngFor="let image of images; let i = index"
+      ></button>
+    </div>
+    <!-- Slider controls -->
+    <button
+      type="button"
+      class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none text-white"
+      data-carousel-prev
+      (click)="prevSlide()"
+    >
+      <span class="text-6xl">&#8249;</span>
+      <!-- Left arrow symbol -->
+    </button>
+    <button
+      type="button"
+      class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none text-white"
+      data-carousel-next
+      (click)="nextSlide()"
+    >
+      <span class="text-6xl">&#8250;</span>
+      <!-- Right arrow symbol -->
+    </button>
+  </div>
+</div>

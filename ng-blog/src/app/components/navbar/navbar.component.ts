@@ -20,12 +20,9 @@ export class NavbarComponent implements OnInit {
 
   toggleUserChoice() {
     this.viewService.toggleUser();
-  }
-
-  isHidden: boolean = true;
-
-  handleMenu(event: Event): void {
-    event.preventDefault();
-    this.isHidden = !this.isHidden;
+    if (!this.viewService.isAdmin()) {
+      // Reset user status and hide the New Post component
+      this.viewService.resetUserStatus();
+    }
   }
 }
