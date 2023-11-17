@@ -1,12 +1,14 @@
-<header class="bg-white">
-  <nav class="flex justify-between items-center w-[92%] mx-auto">
+<header class="bg-white mx-auto mt-5">
+  <nav class="flex justify-between items-center w-full">
     <div>
-      <i class="fa-sharp fa-solid fa-mountain-sun fa-2xl text-5xl"></i>
+      <div class="text-3xl font-bold">Adventure & Lifestyle</div>
     </div>
     <div
-      class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex-items-center px-5"
+      class="flex-grow md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5"
     >
-      <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
+      <ul
+        class="flex justify-center md:flex-row flex-col md:items-center md:gap-[4vw] gap-8"
+      >
         <li>
           <a routerLink="/home" class="relative">
             Home
@@ -49,7 +51,7 @@
     <div class="flex items-center gap-6">
       <button
         (click)="toggleUserChoice()"
-        class="md:ml-4 md:mx-8 transition-transform hover:scale-125 bg-[#915eff] text-white-100 px-4 py-2 rounded-full"
+        class="md:ml-4 md:mx-8 transition-transform hover:scale-105 bg-[#915eff] text-white-100 px-4 py-2 rounded-full"
       >
         {{ currentUserStatus }}
       </button>
