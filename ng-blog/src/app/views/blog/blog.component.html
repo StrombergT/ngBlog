@@ -8,12 +8,14 @@
         >
           Blog
         </h2>
-        <h4 class="text-center mx-auto text-black">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, quia
-          iste sapiente, deserunt recusandae magni obcaecati nulla eius itaque,
-          error animi perferendis perspiciatis. Libero sed odit architecto,
-          ipsum vitae ullam!
-        </h4>
+        <p
+          class="first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-white first-letter:mr-3 first-letter:float-left text-center"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto aperiam
+          necessitatibus ex repellendus dolorum quibusdam. Ipsum delectus eos
+          eum exercitationem error ex quo, veritatis est ea quaerat distinctio
+          placeat quas?
+        </p>
       </section>
 
       <!-- All Posts Section -->
@@ -57,21 +59,16 @@
         </div>
       </section>
     </div>
-
     <!-- Tags Section -->
     <div class="flex-initial hidden lg:block">
-      <div class="border border-[#915eff]">
+      <div class="border border-neutral-400 p-4">
         <h3 class="mt-2 mb-8 text-3xl text-black">Tags:</h3>
         <div class="flex flex-wrap gap-1">
-          <div *ngFor="let post of posts">
+          <ng-container *ngFor="let post of posts">
             <div *ngFor="let tag of post.tags" class="inline-block">
-              <a
-                class="inline-block mr-1 mb-1 bg-gray-300 px-4 py-2 rounded-full no-underline text-black"
-              >
-                #{{ tag }}
-              </a>
+              <a class="inline-block mr-1 mb-1 tag-link"> #{{ tag }} </a>
             </div>
-          </div>
+          </ng-container>
         </div>
       </div>
     </div>

@@ -9,6 +9,7 @@ import { ViewService } from 'src/app/services/view.service';
 })
 export class NavbarComponent implements OnInit {
   currentUserStatus: string = 'user';
+  isMobileMenuOpen = false;
 
   constructor(public viewService: ViewService) {}
 
@@ -21,8 +22,10 @@ export class NavbarComponent implements OnInit {
   toggleUserChoice() {
     this.viewService.toggleUser();
     if (!this.viewService.isAdmin()) {
-      // Reset user status and hide the New Post component
       this.viewService.resetUserStatus();
     }
+  }
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 }

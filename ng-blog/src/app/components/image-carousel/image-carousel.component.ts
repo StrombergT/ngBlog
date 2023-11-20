@@ -5,25 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './image-carousel.component.html',
   styleUrls: ['./image-carousel.component.css'],
 })
-export class ImageCarouselComponent {
-  images: string[] = [
-    'https://images.pexels.com/photos/373289/pexels-photo-373289.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    'https://images.pexels.com/photos/580151/pexels-photo-580151.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    'https://images.pexels.com/photos/2533092/pexels-photo-2533092.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    'https://images.pexels.com/photos/257961/pexels-photo-257961.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  ];
-  currentSlideIndex = 0;
-
-  selectSlide(index: number): void {
-    this.currentSlideIndex = index;
-  }
-
-  prevSlide(): void {
-    this.currentSlideIndex =
-      (this.currentSlideIndex - 1 + this.images.length) % this.images.length;
-  }
-
-  nextSlide(): void {
-    this.currentSlideIndex = (this.currentSlideIndex + 1) % this.images.length;
-  }
-}
+export class ImageCarouselComponent {}
