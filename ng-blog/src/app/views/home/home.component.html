@@ -19,6 +19,7 @@
       (click)="navigateToPostDetails(post.id)"
     >
       <div class="font-bold text-lg mb-2">{{ post.title }}</div>
+
       <img
         class="rounded-xl w-full h-80 object-cover transition transform hover:scale-105 mt-5 p-5"
         [src]="post.thumbnailUrl"
@@ -35,6 +36,10 @@
           <i class="fas fa-thumbs-down"></i> {{ post.dislikes }}
         </div>
       </div>
+
+      <p class="text-gray-500 mb-2">
+        {{ post.creationDate | date : "medium" }}
+      </p>
       <hr class="border-t border-neutral-200 my-4" />
     </div>
   </div>

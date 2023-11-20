@@ -10,10 +10,13 @@ import { Post } from 'src/app/models/post';
 })
 export class HomeComponent {
   constructor(private postService: PostService, private router: Router) {}
-  post: Post | undefined;
 
   get posts(): Post[] {
-    return this.postService.posts;
+    return this.postService.posts.sort((a, b) => {
+      return (
+        new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime()
+      );
+    });
   }
 
   navigateToPostDetails(postId: number): void {
