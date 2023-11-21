@@ -17,7 +17,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { TagFilterComponent } from './components/tag-filter/tag-filter.component';
-import { ImageCarouselComponent } from './components/image-carousel/image-carousel.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import { ImageCarouselComponent } from './components/image-carousel/image-carous
     NavbarComponent,
     TagsComponent,
     TagFilterComponent,
-    ImageCarouselComponent,
   ],
   imports: [
     BrowserModule,

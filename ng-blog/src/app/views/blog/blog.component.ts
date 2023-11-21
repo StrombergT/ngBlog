@@ -17,13 +17,14 @@ export class BlogComponent {
     private postService: PostService,
     private router: Router
   ) {
+    // Subscribe to changes in route parameters to update 'id' property
     activatedRoute.params.subscribe((params) => (this.id = params['id']));
   }
-  post: Post | undefined;
-
+  // Getter function to retrieve posts from PostService
   get posts(): Post[] {
     return this.postService.posts;
   }
+  // Function to navigate to the details page of a specific post
   navigateToPostDetails(postId: number): void {
     this.router.navigate(['/blog', postId]);
   }

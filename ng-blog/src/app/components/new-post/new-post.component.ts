@@ -31,8 +31,10 @@ export class NewPostComponent {
   }
   uploadPost(): void {
     if (this.viewService.isAdmin()) {
-      this.tags = this.tagsInput.split(',').map((tag) => tag.trim());
+      // Check if the user is an admin
+      this.tags = this.tagsInput.split(',').map((tag) => tag.trim()); // Split the tagsInput string into an array of tags
 
+      // Call the addPost method of the PostService to add a new post
       this.postService.addPost(
         this.title,
         this.content,
@@ -40,11 +42,8 @@ export class NewPostComponent {
         this.tags
       );
 
+      // Navigate to home page after uploading post
       this.router.navigate(['/']);
     }
-  }
-
-  removeTag(tagToRemove: string): void {
-    this.tags = this.tags.filter((tag) => tag !== tagToRemove);
   }
 }

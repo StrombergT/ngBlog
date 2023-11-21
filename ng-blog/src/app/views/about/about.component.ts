@@ -6,16 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./about.component.css'],
 })
 export class AboutComponent {
+  //Proprties to the form and store form data
   public showForm: boolean = false;
   public firstName: string = '';
   public lastName: string = '';
   public email: string = '';
   public message: string = '';
 
+  // Function to toggle the visibility of the form
   toggleForm() {
     this.showForm = !this.showForm;
   }
 
+  // Function to handle form submission and clear form data after submission
   onSubmit() {
     console.log('Firstname:', this.firstName);
     console.log('Lastname:', this.lastName);

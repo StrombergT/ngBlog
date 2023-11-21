@@ -5,16 +5,20 @@ import { Comment } from '../models/comment';
   providedIn: 'root',
 })
 export class CommentService {
+  // Array to store comments
   public comments: Comment[] = [];
 
+  // load comments from local storage
   constructor() {
     this.loadLocalStorage();
   }
 
+  // Function to get all comments
   public getComments(): Comment[] {
     return this.comments;
   }
 
+  // Function to add a new comment and create a new comment
   public addComment(postId: number, body: string, name: string): void {
     const newComment: Comment = {
       id: (this.comments.length + 1).toString(),
@@ -23,14 +27,17 @@ export class CommentService {
       postId: postId,
     };
 
+    // Add the new comment to the comments array and save to local storage
     this.comments.push(newComment);
     this.saveLocalStorage();
   }
 
+  // Function to get all comments for a specific post
   public getCommentsForPost(postId: number): Comment[] {
     return this.comments.filter((comment) => comment.postId === postId);
   }
 
+  // Function to remove a comment
   public removeComment(commentId: string): void {
     const index = this.comments.findIndex(
       (comment) => comment.id === commentId
@@ -41,11 +48,13 @@ export class CommentService {
     }
   }
 
+  // Private function to load comments from local storage
   private loadLocalStorage(): void {
     let storedComments = localStorage.getItem('comments');
     this.comments = storedComments ? JSON.parse(storedComments) : [];
   }
 
+  // Private function to save comments to local storage
   private saveLocalStorage(): void {
     localStorage.setItem('comments', JSON.stringify(this.comments));
   }

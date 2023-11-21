@@ -66,7 +66,8 @@
         <div class="flex flex-wrap gap-1">
           <ng-container *ngFor="let post of posts">
             <div *ngFor="let tag of post.tags" class="inline-block">
-              <a class="inline-block mr-1 mb-1 tag-link"> #{{ tag }} </a>
+              <!-- Loop through each 'tag' in the 'post.tags' array -->
+              <a class="inline-block mr-1 mb-1"> #{{ tag }} </a>
             </div>
           </ng-container>
         </div>

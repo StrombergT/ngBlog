@@ -1,38 +1,3 @@
-/*import { Injectable } from '@angular/core';
-import { Post } from '../models/post';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class PostService {
-  private localPosts: Post[] = [];
-
-  constructor() {
-    this.localPosts = this.loadLocalData();
-  }
-
-  private loadLocalData(): Post[] {
-    let posts = localStorage.getItem('posts');
-    return !posts ? [] : JSON.parse(posts);
-  }
-
-  public getPosts(): Post[] {
-    return this.localPosts;
-  }
-  public addPost(title: string, body: string, thumbnailUrl: string) {
-    this.localPosts.push({
-      id: this.localPosts.length + 1,
-      title,
-      body,
-      thumbnailUrl,
-      creationDate: new Date(),
-      likes: 0,
-      dislikes: 0,
-      comments: [],
-    });
-    localStorage.setItem('posts', JSON.stringify(this.localPosts));
-  }
-}*/
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post';
 
@@ -40,22 +5,27 @@ import { Post } from '../models/post';
   providedIn: 'root',
 })
 export class PostService {
+  // Array to store posts
   public posts: Post[] = [];
 
+  // load posts from local storage
   constructor() {
     this.loadLocalStorage();
   }
 
+  // Function to get all posts
   public getPosts(): Post[] {
     return this.posts;
   }
 
+  // Function to add a new post
   public addPost(
     title: string,
     body: string,
     thumbnailUrl: string,
     tags: string[]
   ): void {
+    // Create a new post
     const newPost: Post = {
       id: this.posts.length + 1,
       title: title,
@@ -67,11 +37,12 @@ export class PostService {
       dislikes: 0,
       comments: [],
     };
-
+    // Add the new post to the posts array and save to local storage
     this.posts.push(newPost);
     this.saveLocalStorage();
   }
 
+  // Function like count of a post
   public likePost(postId: number): void {
     const post = this.getPostById(postId);
     if (post) {
@@ -79,7 +50,7 @@ export class PostService {
       this.saveLocalStorage();
     }
   }
-
+  // Function dislike count of a post
   public dislikePost(postId: number): void {
     const post = this.getPostById(postId);
     if (post) {
@@ -88,11 +59,13 @@ export class PostService {
     }
   }
 
+  // Function to get a post
   public getPostById(id: number): Post | undefined {
     const post = this.posts.find((post) => post.id === id);
     return post;
   }
 
+  // Function to remove a post
   public removePost(postId: number): void {
     const index = this.posts.findIndex((post) => post.id === postId);
     if (index !== -1) {
@@ -101,11 +74,13 @@ export class PostService {
     }
   }
 
+  // function to load posts from local storage
   private loadLocalStorage(): void {
     let storedPosts = localStorage.getItem('posts');
     this.posts = storedPosts ? JSON.parse(storedPosts) : [];
   }
 
+  //  function to save posts to local storage
   private saveLocalStorage(): void {
     localStorage.setItem('posts', JSON.stringify(this.posts));
   }

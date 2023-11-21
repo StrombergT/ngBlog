@@ -7,5 +7,6 @@ import { Post } from 'src/app/models/post';
   styleUrls: ['./post-list.component.css'],
 })
 export class PostListComponent {
+  // Input to receive a post from parent component
   @Input() post: Post = {} as Post;
 }
