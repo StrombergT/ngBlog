@@ -10,13 +10,11 @@ import { AboutComponent } from './views/about/about.component';
 import { HomeComponent } from './views/home/home.component';
 import { NewPostComponent } from './components/new-post/new-post.component';
 
-import { PostListComponent } from './components/post-list/post-list.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { BlogComponent } from './views/blog/blog.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TagsComponent } from './components/tags/tags.component';
-import { TagFilterComponent } from './components/tag-filter/tag-filter.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +22,12 @@ import { TagFilterComponent } from './components/tag-filter/tag-filter.component
     AboutComponent,
     HomeComponent,
     NewPostComponent,
-    PostListComponent,
+
     PostDetailComponent,
     BlogComponent,
     FooterComponent,
     NavbarComponent,
     TagsComponent,
-    TagFilterComponent,
   ],
   imports: [
     BrowserModule,

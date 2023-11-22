@@ -19,7 +19,7 @@
         class="w-full p-2 border rounded"
       />
     </div>
-    <div *ngIf="thumbnailUrl" class="w-full">
+    <div *ngIf="thumbnailUrl" class="w-1/2 mx-auto">
       <img
         [src]="thumbnailUrl"
         alt="Thumbnail"
@@ -41,7 +41,7 @@
         [(ngModel)]="tagsInput"
         type="text"
         name="tagsInput"
-        placeholder="Tags (comma separated)"
+        placeholder="Tags (example: sun, sunglasses)"
         class="w-full p-2 border rounded"
       />
     </div>
