@@ -4,7 +4,10 @@
   *ngIf="post"
   class="flex flex-col max-w-2xl mx-auto my-8 p-6 bg-white mt-24"
 >
-  <img class="w-full h-80 mb-4 rounded-xl mx-auto" [src]="post.thumbnailUrl" />
+  <img
+    class="w-full h-full mb-4 rounded-xl mx-auto"
+    [src]="post.thumbnailUrl"
+  />
   <h2 class="text-2xl font-bold mb-4 text-center text-black">
     {{ post.title }}
   </h2>
@@ -18,7 +21,7 @@
   <div class="flex items-center space-x-1 mb-2 mt-2">
     <button
       (click)="likePost()"
-      class="text-black font-bold py-1 px-2 rounded-full text-sm"
+      class="bg-gray-500 text-white font-bold py-1 px-2 rounded-full text-sm"
     >
       <i
         class="fas fa-heart text-red-600 text-xl transition duration-200 ease-in-out transform hover:scale-125"
@@ -28,7 +31,7 @@
 
     <button
       (click)="dislikePost()"
-      class="text-black font-bold py-1 px-2 rounded-full text-sm"
+      class="bg-gray-500 text-white font-bold py-1 px-2 rounded-full text-sm"
     >
       <i
         class="fas fa-thumbs-down text-xl transition duration-200 ease-in-out transform hover:scale-125"

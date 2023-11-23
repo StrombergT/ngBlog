@@ -24,18 +24,6 @@
         class="rounded-xl w-full h-80 object-cover transition transform hover:scale-105 mt-5 p-5"
         [src]="post.thumbnailUrl"
       />
-      <div class="flex items-center space-x-1 mb-2 mt-2">
-        <div
-          class="bg-gray-500 text-white font-bold py-1 px-2 rounded-full text-sm"
-        >
-          <i class="fas fa-heart"></i> {{ post.likes }}
-        </div>
-        <div
-          class="bg-gray-500 text-white font-bold py-1 px-2 rounded-full text-sm"
-        >
-          <i class="fas fa-thumbs-down"></i> {{ post.dislikes }}
-        </div>
-      </div>
 
       <p class="text-gray-500 mb-2">
         {{ post.creationDate | date : "medium" }}
@@ -48,7 +36,7 @@
     class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 mx-auto md:float-left md:pl-5 mt-10"
   >
     <div class="mx-2 my-4 text-black bg-white-100 mt-5 p-5 top-12 sticky">
-      <h2 class="underline text-center mb-5">About Traveling Blog</h2>
+      <h2 class="text-center mb-5">My Traveling Blog</h2>
       <img
         class="w-40 h-40 mx-auto rounded-full mb-5"
         src="https://images.pexels.com/photos/3560138/pexels-photo-3560138.jpeg?auto=compress&cs=tinysrgb&w=1600"

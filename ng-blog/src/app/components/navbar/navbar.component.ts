@@ -29,8 +29,4 @@ export class NavbarComponent implements OnInit {
       this.viewService.resetUserStatus();
     }
   }
-  // toggle mobile menu
-  toggleMobileMenu() {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
-  }
 }
