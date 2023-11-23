@@ -56,13 +56,13 @@ export class PostDetailComponent implements OnInit {
     this.newComment = '';
   }
 
-  // Function to handle removing a comment
+  // Function for admin to handle removing a comment
   removeComment(commentId: string): void {
     this.commentService.removeComment(commentId);
     this.comments = this.commentService.getCommentsForPost(this.postId) || [];
   }
 
-  // Function to handle removing the post
+  // Function for admin to handle removing the post
   removePost(): void {
     if (this.post) {
       // Check if the post exists before removing it, then navigate back to the home page

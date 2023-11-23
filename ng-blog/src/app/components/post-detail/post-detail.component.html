@@ -4,7 +4,7 @@
   *ngIf="post"
   class="flex flex-col max-w-2xl mx-auto my-8 p-6 bg-white mt-24"
 >
-  <img class="w-full mb-4 rounded-xl mx-auto" [src]="post.thumbnailUrl" />
+  <img class="w-full h-80 mb-4 rounded-xl mx-auto" [src]="post.thumbnailUrl" />
   <h2 class="text-2xl font-bold mb-4 text-center text-black">
     {{ post.title }}
   </h2>
@@ -76,7 +76,7 @@
     />
     <button
       (click)="addComment()"
-      class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none"
+      class="px-4 py-2 text-white bg-gray-500 rounded hover:bg-gray-700 focus:outline-none"
     >
       Add Comment
     </button>

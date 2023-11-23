@@ -22,7 +22,6 @@ import { TagsComponent } from './components/tags/tags.component';
     AboutComponent,
     HomeComponent,
     NewPostComponent,
-
     PostDetailComponent,
     BlogComponent,
     FooterComponent,
