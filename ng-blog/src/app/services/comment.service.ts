@@ -10,7 +10,7 @@ export class CommentService {
 
   // load comments from local storage
   constructor() {
-    this.loadLocalStorage();
+    this.comments = this.loadLocalStorage();
   }
 
   // Function to get all comments
@@ -37,7 +37,7 @@ export class CommentService {
     return this.comments.filter((comment) => comment.postId === postId);
   }
 
-  // Function to remove a comment
+  // Function to remove a comment (Admin)
   public removeComment(commentId: string): void {
     const index = this.comments.findIndex(
       (comment) => comment.id === commentId
@@ -49,9 +49,9 @@ export class CommentService {
   }
 
   // Private function to load comments from local storage
-  private loadLocalStorage(): void {
+  private loadLocalStorage(): Comment[] {
     let storedComments = localStorage.getItem('comments');
-    this.comments = storedComments ? JSON.parse(storedComments) : [];
+    return !storedComments ? [] : JSON.parse(storedComments);
   }
 
   // Private function to save comments to local storage

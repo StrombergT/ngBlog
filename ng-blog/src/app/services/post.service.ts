@@ -10,7 +10,7 @@ export class PostService {
 
   // load posts from local storage
   constructor() {
-    this.loadLocalStorage();
+    this.posts = this.loadLocalStorage();
   }
 
   // Function to get all posts
@@ -59,13 +59,13 @@ export class PostService {
     }
   }
 
-  // Function to get a post
+  // Function to get a post by its id
   public getPostById(id: number): Post | undefined {
     const post = this.posts.find((post) => post.id === id);
     return post;
   }
 
-  // Function to remove a post
+  // Function to remove a post (Admin)
   public removePost(postId: number): void {
     const index = this.posts.findIndex((post) => post.id === postId);
     if (index !== -1) {
@@ -75,9 +75,9 @@ export class PostService {
   }
 
   // function to load posts from local storage
-  private loadLocalStorage(): void {
+  private loadLocalStorage(): Post[] {
     let storedPosts = localStorage.getItem('posts');
-    this.posts = storedPosts ? JSON.parse(storedPosts) : [];
+    return !storedPosts ? [] : JSON.parse(storedPosts);
   }
 
   //  function to save posts to local storage

@@ -11,7 +11,11 @@
   <h2 class="text-2xl font-bold mb-4 text-center text-black">
     {{ post.title }}
   </h2>
-  <div class="mb-4 text-black">{{ post.body }}</div>
+  <div class="mb-4 leading-relaxed text-justify text-black font-sans text-base">
+    <p *ngFor="let paragraph of post.body.split('\n')" class="mb-5">
+      {{ paragraph }}
+    </p>
+  </div>
 
   <div class="flex items-center mt-4">
     <span class="mr-2 text-gray-500"
@@ -24,7 +28,7 @@
       class="bg-gray-500 text-white font-bold py-1 px-2 rounded-full text-sm"
     >
       <i
-        class="fas fa-heart text-red-600 text-xl transition duration-200 ease-in-out transform hover:scale-125"
+        class="fa-solid fa-heart text-red-600 text-xl transition duration-200 ease-in-out transform hover:scale-125"
       ></i>
       {{ post.likes }}
     </button>
@@ -34,7 +38,7 @@
       class="bg-gray-500 text-white font-bold py-1 px-2 rounded-full text-sm"
     >
       <i
-        class="fas fa-thumbs-down text-xl transition duration-200 ease-in-out transform hover:scale-125"
+        class="fa-solid fa-thumbs-down text-xl transition duration-200 ease-in-out transform hover:scale-125"
       ></i>
       {{ post.dislikes }}
     </button>

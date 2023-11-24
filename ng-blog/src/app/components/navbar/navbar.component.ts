@@ -23,10 +23,6 @@ export class NavbarComponent implements OnInit {
 
   // toggle the user choice (admin/user)
   toggleUserChoice() {
-    this.viewService.toggleUser(); // Toggle the user status using ViewService
-    if (!this.viewService.isAdmin()) {
-      // Reset user status if the current user is not an admin
-      this.viewService.resetUserStatus();
-    }
+    this.viewService.toggleUser();
   }
 }
